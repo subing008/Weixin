@@ -22,25 +22,23 @@ router.get('/weixin',function(req, res, next){
   var nonce = query.nonce;
   var echostr = query.echostr;
 
-  if (req.method === 'POST') {
-    console.log("POST : ",{body: req.body,query: req.query});
-  }else if (req.method === 'GET') {
-    if (!echostr) {
-      return res.send("Invalid token!");
-    }
-    console.log("GET : ",{body: req.body});
+  if ( !signature || ! timestamp || !nonce || !echostr) {
+    return res.send("Invalid token!");
+  }
 
-    var array = new Array(nonce,timestamp,token);
-    array.sort();
+  var array = new Array(nonce,timestamp,token);
+  array.sort();
 
-    var arraystr = array[0] + array[1] + array[2];
-    var sinat = Sha1Encrypt(arraystr);
-    if (sinat == signature) {
-      res.send(echostr);
-    } else {
-      res.send("Invalid token!");
-    }
+  var arraystr = array[0] + array[1] + array[2];
+  var sinat = Sha1Encrypt(arraystr);
+  if (sinat == signature) {
+    res.send(echostr);
+  } else {
+    res.send("Invalid token!");
   }
 });
 
+router.post('/weixin',function(req,res,next){
+  console.log("POST : ",{body: req.body,query: req.query});
+})
 module.exports = router;
