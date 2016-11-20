@@ -11,7 +11,7 @@ function Sha1Encrypt(str){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'MyServer' });
+  res.render('index', { title: 'MyServers' });
 });
 
 var token = "79faf82271944fe38c4f1d99be71bc9c";
