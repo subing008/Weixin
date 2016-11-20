@@ -21,11 +21,11 @@ router.get('/weixin',function(req, res, next){
   var timestamp = query['timestamp'];
   var nonce = query.nonce;
   var echostr = query.echostr;
-
+  console.log("test1");
   if (!signature || !timestamp || !nonce) {
     return res.send("Invalid token!");
   }
-
+  console.log("test2");
   if (req.method === 'POST') {
     console.log("POST : ",{body: req.body,query: req.query});
   }else if (req.method === 'GET') {
@@ -34,7 +34,7 @@ router.get('/weixin',function(req, res, next){
     }
     console.log("GET : ",{body: req.body});
   }
-
+  console.log("test3");
   var array = new Array(nonce,timestamp,token);
   array.sort();
 
