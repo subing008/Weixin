@@ -15,13 +15,25 @@ router.get('/', function(req, res, next) {
 });
 
 var token = "79faf82271944fe38c4f1d99be71bc9c";
-
 router.get('/weixin',function(req, res, next){
   var query = req.query;
   var signature = query.signature;
   var timestamp = query['timestamp'];
   var nonce = query.nonce;
   var echostr = query.echostr;
+
+  if (!signature || !timestamp || !nonce) {
+    return res.send("Invalid token!");
+  }
+
+  if (req.method === 'POST') {
+    console.log("POST : ",{body: req.body,query: req.query});
+  }else if (req.method === 'GET') {
+    if (!echostr) {
+      return res.send("Invalid token!");
+    }
+    console.log("GET : ",{body: req.body});
+  }
 
   var array = new Array(nonce,timestamp,token);
   array.sort();
