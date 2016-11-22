@@ -59,10 +59,10 @@ router.post('/weixin',function(req,res,next){
     send_content = "本公众号暂时没有更多功能，敬请期待！";
   }
 
-  var send_xml = "<xml><ToUserName><![CDATA[" + fromusername + "]]></ToUserName>"
-                 "<FromUserName><![CDATA[" + tousername + "]]></FromUserName>"
-                 "<CreateTime>" + createtime + "</CreateTime>"
-                 "<MsgType><![CDATA[text]]></MsgType>"
+  var send_xml = "<xml><ToUserName><![CDATA[" + fromusername + "]]></ToUserName>"+
+                 "<FromUserName><![CDATA[" + tousername + "]]></FromUserName>"+
+                 "<CreateTime>" + createtime + "</CreateTime>"+
+                 "<MsgType><![CDATA[text]]></MsgType>"+
                  "<Content><![CDATA[" + send_content + "]]></Content></xml>";
   // var xml2 = "<FromUserName><![CDATA[" + tousername + "]]></FromUserName>";
   // var xml3 = "<CreateTime>" + createtime + "</CreateTime>";
