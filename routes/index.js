@@ -44,7 +44,7 @@ router.post('/weixin',function(req,res,next){
   var msgtype = req.body.xml.msgtype[0].toString();
   var content = req.body.xml.content[0].toString();
   var msgid = req.body.xml.msgid[0].toString();;
-  var createtime = Math.round(Data.now()/1000);
+  var createtime = Math.round(Date.now()/1000);
 
   console.log(msgtype);
   console.log(content);
