@@ -46,7 +46,23 @@ router.post('/weixin',function(req,res,next){
   var msgid = req.body.xml.msgid[0].toString();;
   var createtime = Math.round(Date.now()/1000);
 
-  console.log(msgtype);
-  console.log(content);
+  if (msgtype === "text") {
+    var send_content = "当前公众号正在开发阶段，更多功能敬请期待！";
+    if (content == "帮助") {
+      send_content = "本公众号测试专用！";
+    }
+  }else{
+    send_content = "本公众号暂时没有更多功能，敬请期待！";
+  }
+
+  var send_xml= "<xml>
+                <ToUserName><![CDATA[fromusername]]></ToUserName>
+                <FromUserName><![CDATA[tousername]]></FromUserName>
+                <CreateTime>createtime</CreateTime>
+                <MsgType><![CDATA[text]]></MsgType>
+                <Content><![CDATA[send_content]]></Content>
+                </xml>";
+  res.set("Content-Type","text/xml");
+  res.send(send_xml);
 })
 module.exports = router;
