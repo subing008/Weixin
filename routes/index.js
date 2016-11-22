@@ -46,6 +46,10 @@ router.post('/weixin',function(req,res,next){
   var msgid = req.body.xml.msgid[0].toString();;
   var createtime = Math.round(Date.now()/1000);
 
+  console.log("tousername : " + tousername);
+  console.log("fromusername : " + fromusername);
+  console.log("msgid : " + msgid);
+
   if (msgtype === "text") {
     var send_content = "当前公众号正在开发阶段，更多功能敬请期待！";
     if (content == "帮助") {
