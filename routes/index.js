@@ -39,6 +39,14 @@ router.get('/weixin',function(req, res, next){
 });
 
 router.post('/weixin',function(req,res,next){
-  console.log("POST : ",{body: req.body,query: req.query});
+  var tousername = req.body.xml.tousername[0].toString();
+  var fromusername = req.body.xml.fromusername[0].toString();
+  var msgtype = req.body.xml.msgtype[0].toString();
+  var content = req.body.xml.content[0].toString();
+  var msgid = req.body.xml.msgid[0].toString();;
+  var createtime = Math.round(Data.now()/1000);
+
+  console.log(msgtype);
+  console.log(content);
 })
 module.exports = router;
