@@ -11,6 +11,8 @@ router.post('/', wechat(token).text(function(message,req,res,next){
   }else{
     res.reply("本公众号测试专用！");
   }
+}).image(function(message,req,res,next){
+  res.reply("MsgType : 图片类型");
 }).middlewarify());
 
 module.exports = router;
