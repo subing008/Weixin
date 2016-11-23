@@ -64,12 +64,7 @@ router.post('/weixin',function(req,res,next){
                  "<CreateTime>" + createtime + "</CreateTime>"+
                  "<MsgType><![CDATA[text]]></MsgType>"+
                  "<Content><![CDATA[" + send_content + "]]></Content></xml>";
-  // var xml2 = "<FromUserName><![CDATA[" + tousername + "]]></FromUserName>";
-  // var xml3 = "<CreateTime>" + createtime + "</CreateTime>";
-  // var xml4 = "<MsgType><![CDATA[text]]></MsgType>";
-  // var xml5 = "<Content><![CDATA[" + send_content + "]]></Content></xml>";
-  // send_xml = xml1 + xml2 + xml3 + xml4 + xml5;
-  //const send_xml= '<xml><ToUserName><![CDATA[fromusername]]></ToUserName><FromUserName><![CDATA[${tousername}]]></FromUserName><CreateTime>${createtime}</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[send_content]]></Content></xml>';
+
   res.set("Content-Type","text/xml");
   res.send(send_xml);
 })
