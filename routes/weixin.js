@@ -3,9 +3,9 @@ var router = express.Router();
 var wechat = require('wechat');
 var jssdk = require('../lib/jssdk.js');
 var token = "79faf82271944fe38c4f1d99be71bc9c";
-
+const myUrlRoot = "http://kugcsq.top/weixin";
 router.get('/user',function(req,res,next){
-  jssdk.getSignPackage(req.url,function(err,SignPackage){
+  jssdk.getSignPackage(myUrlRoot+req.url,function(err,SignPackage){
     if (err) {
       return next(err);
     }
